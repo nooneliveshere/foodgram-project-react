@@ -1,1 +1,1 @@
-# praktikum_new_diplom
+# тут надо охуенный ридми
