@@ -1,11 +1,6 @@
 # Foodgram
 
-![](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![](https://img.shields.io/badge/django%20rest-ff1709?style=for-the-badge&logo=django&logoColor=white)
-![](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=green)
-![](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white)
-![](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white)
-![](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
+Ознакомительная версия проекта доступна по ссылке  https://nooneliveshere.site/
 
 Foodgram - проект, выполненный в рамках обучения в Яндекс Практикуме. Проект позволяет:
 
@@ -60,4 +55,8 @@ docker-compose exec backend python3 manage.py collectstatic --no-input
 Проект должен быть доступен по http://127.0.0.1, документацию к проекту 
 можно будет найти по адресу http://127.0.0.1/api/docs/ 
 
-добавить удаленный сервер
+Учетные данные админа для проверки:
+```
+master@nooneliveshere.site
+Cegthgfhjkm1
+```
