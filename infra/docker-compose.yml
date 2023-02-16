@@ -2,7 +2,10 @@ version: '3.3'
 services:
 
   frontend:
-    image: nooneliveshere/foodgram_frontend:latest
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: frontend-container
     volumes:
       - ../frontend/:/app/result_build/
 
