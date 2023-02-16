@@ -79,7 +79,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, permission_classes=[IsAuthenticated])
     def download_shopping_cart(self, request):
-        """Метод для скачивания списка покупок в формате txt"""
+        """Метод для скачивания списка покупок"""
         user = request.user
         if not user.shoppingcarts.exists():
             return Response(status=status.HTTP_400_BAD_REQUEST)
@@ -110,9 +110,9 @@ class RecipeViewSet(viewsets.ModelViewSet):
             ]
         )
         shopping_list += '\n\n'
-        shopping_list += '**Здесь будет ваша реклама**'
+        shopping_list += 'Приятного Аппетита!'
 
-        filename = f'{user.username}_shopping_list.txt'
+        filename = f'{user.username}_shopping.txt'
         response = HttpResponse(shopping_list, content_type='text/plain')
         response['Content-Disposition'] = f'attachment; filename={filename}'
         return response
