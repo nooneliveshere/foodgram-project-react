@@ -52,10 +52,9 @@ cd foodgram-project-react/infra
 docker-compose -d --build
 ```
 
-Выполнить внутри контейнера миграции, заполнить БД данными и собрать статику:
+Выполнить внутри контейнера миграции, собрать статику:
 ```
 docker-compose exeс back python3 manage.py migrate
-docker-compose exeс back python3 manage.py load_data
 docker-compose exec back python3 manage.py collectstatic --no-input
 ```
 
