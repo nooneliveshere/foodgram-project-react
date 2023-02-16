@@ -54,6 +54,7 @@ docker-compose -d --build
 
 Выполнить внутри контейнера миграции, собрать статику:
 ```
+docker-compose exeс back python3 manage.py makemigrations
 docker-compose exeс back python3 manage.py migrate
 docker-compose exec back python3 manage.py collectstatic --no-input
 ```
