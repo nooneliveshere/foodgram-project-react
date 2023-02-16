@@ -40,7 +40,7 @@ SECRET_KEY=
 Клонировать репозиторий и перейти в директорию infra:
 
 ```
-git clone https://github.com/AlexanderZug/foodgram-project-react.git
+git clone https://github.com/nooneliveshere/foodgram-project-react.git
 ```
 
 ```
@@ -59,5 +59,5 @@ docker-compose exeс back python3 manage.py load_data
 docker-compose exec back python3 manage.py collectstatic --no-input
 ```
 
-Проект должен быть доступен по http://localhost, документацию к проекту 
-можно будет найти по адресу http://localhost/api/docs/ 
+Проект должен быть доступен по http://127.0.0.1, документацию к проекту 
+можно будет найти по адресу http://127.0.0.1/api/docs/ 
