@@ -54,9 +54,9 @@ docker-compose -d --build
 
 Выполнить внутри контейнера миграции, собрать статику:
 ```
-docker-compose exeс back python3 manage.py makemigrations
-docker-compose exeс back python3 manage.py migrate
-docker-compose exec back python3 manage.py collectstatic --no-input
+docker-compose exeс backend python3 manage.py makemigrations
+docker-compose exeс backend python3 manage.py migrate
+docker-compose exec backend python3 manage.py collectstatic --no-input
 ```
 
 Проект должен быть доступен по http://127.0.0.1, документацию к проекту 
