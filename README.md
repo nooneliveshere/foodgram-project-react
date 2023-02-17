@@ -57,6 +57,7 @@ docker-compose exec backend python3 manage.py collectstatic --no-input
 
 Учетные данные админа для проверки:
 ```
+master
 master@nooneliveshere.site
 Cegthgfhjkm1
 ```
