@@ -1,3 +1,4 @@
+from django.db import transaction
 from django.shortcuts import get_object_or_404
 from rest_framework import serializers, status
 
@@ -125,22 +126,25 @@ class RecipePostSerializer(serializers.ModelSerializer):
             )
         return value
 
+    @transaction.atomic
     def _create_ingredient_recipe_objects(self, ingredients, recipe):
         """Вспомогательный метод для создания
         объектов модели IngredientRecipe"""
-        for ingredient in ingredients:
-            ingredient_amount = ingredient.pop("amount")
-            ingredient_obj = get_object_or_404(
-                Ingredient, id=ingredient['ingredient']['id']
-            )
-            IngredientRecipe.objects.get_or_create(
-                recipe=recipe,
-                ingredient=ingredient_obj,
-                amount=ingredient_amount
-            )
-            recipe.ingredients.add(ingredient_obj)
+        IngredientRecipe.objects.bulk_create(
+            [
+                IngredientRecipe(
+                    recipe=recipe,
+                    amount=ingredient.pop("amount"),
+                    ingredient = get_object_or_404(
+                        Ingredient, id=ingredient['ingredient']['id']
+                    )                    
+                )
+                for ingredient in ingredients
+            ]
+        )
         return recipe
-
+    
+    @transaction.atomic
     def create(self, validated_data):
         tags = validated_data.pop("tags")
         ingredients = validated_data.pop('ingredients')
@@ -148,6 +152,7 @@ class RecipePostSerializer(serializers.ModelSerializer):
         recipe.tags.set(tags)
         return self._create_ingredient_recipe_objects(ingredients, recipe)
 
+    @transaction.atomic
     def update(self, instance, validated_data):
         tags = validated_data.pop('tags')
         ingredients = validated_data.pop('ingredients')

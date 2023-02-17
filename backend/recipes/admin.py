@@ -11,6 +11,7 @@ class IngredientInLine(admin.TabularInline):
     verbose_name_plural = "Ингредиенты"
 
 
+@admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
     list_display = (
         'id',
@@ -46,6 +47,7 @@ class RecipeAdmin(admin.ModelAdmin):
         return obj.favorites.all().count()
 
 
+@admin.register(Ingredient)
 class IngredientAdmin(admin.ModelAdmin):
     list_display = (
         'id',
@@ -55,6 +57,7 @@ class IngredientAdmin(admin.ModelAdmin):
     list_filter = ('name',)
 
 
+@admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
     list_display = (
         'id',
@@ -64,6 +67,7 @@ class TagAdmin(admin.ModelAdmin):
     )
 
 
+@admin.register(User)
 class UserAdmin(admin.ModelAdmin):
     list_display = (
         'id',
@@ -73,9 +77,3 @@ class UserAdmin(admin.ModelAdmin):
         'email',
     )
     list_filter = ('email', 'username',)
-
-
-admin.site.register(Recipe, RecipeAdmin)
-admin.site.register(Ingredient, IngredientAdmin)
-admin.site.register(Tag, TagAdmin)
-admin.site.register(User, UserAdmin)

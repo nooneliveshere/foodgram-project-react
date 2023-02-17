@@ -15,8 +15,8 @@ class CustomUserSerializer(UserSerializer):
     class Meta:
         model = User
         fields = (
-            "id", "email", "username", "first_name",
-            "last_name", "is_subscribed",
+            'id', 'email', 'username', 'first_name',
+            'last_name', 'is_subscribed',
         )
 
     def get_is_subscribed(self, obj):
@@ -55,8 +55,8 @@ class SubscribeSerializer(UserSerializer):
 
     class Meta(UserSerializer.Meta):
         fields = (
-            "id", "email", "username", "first_name", "last_name",
-            "is_subscribed", "recipes", "recipes_count",
+            'id', 'email', 'username', 'first_name', 'last_name',
+            'is_subscribed', 'recipes', 'recipes_count',
         )
         read_only_fields = ('email', 'username', 'first_name', 'last_name')
 
@@ -73,7 +73,7 @@ class SubscribeSerializer(UserSerializer):
         limit = request.GET.get('recipes_limit')
         recipes = obj.recipes.all()
         if limit:
-            recipes = recipes[: int(limit)]
+            recipes = recipes[:int(limit)]
         serializer = RecipeMiniSerializer(recipes, many=True, read_only=True)
         return serializer.data
 

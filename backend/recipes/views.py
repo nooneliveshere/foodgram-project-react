@@ -52,7 +52,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
             model.objects.create(user=user, recipe=recipe)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-        if request.method == "DELETE":
+        if request.method == 'DELETE':
             obj = get_object_or_404(model, user=user, recipe=recipe)
             obj.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
@@ -109,9 +109,8 @@ class RecipeViewSet(viewsets.ModelViewSet):
                 for ingredient in ingredients
             ]
         )
-        shopping_list += '\n\n'
-        shopping_list += 'Приятного Аппетита!'
-
+        shopping_list += "".join(['\n\n', 'Приятного Аппетита!'])
+  
         filename = f'{user.username}_shopping.txt'
         response = HttpResponse(shopping_list, content_type='text/plain')
         response['Content-Disposition'] = f'attachment; filename={filename}'
